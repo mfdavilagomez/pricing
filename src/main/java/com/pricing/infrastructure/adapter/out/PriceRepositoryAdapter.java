@@ -19,8 +19,8 @@ public class PriceRepositoryAdapter implements PriceRepositoryPort {
 
     @Override
     public Optional<Price> findApplicablePrice(
-            Long productId, Long brandId, LocalDateTime startDate, LocalDateTime endDate) {
-        return priceJpaRepository.findApplicablePrice(
-                productId, brandId, startDate, endDate);
+            Long productId, Long brandId, LocalDateTime applicationDate) {
+        return priceJpaRepository.findApplicablePrice(productId, brandId, applicationDate);
     }
+
 }
