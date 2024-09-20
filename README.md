@@ -1,20 +1,25 @@
-# Pricing API
+# Pricing Application
 
-Esta API ofrece un servicio REST para consultar precios de productos basados en fecha, identificador de producto y cadena. Utiliza una arquitectura hexagonal y sigue los principios de diseño SOLID para garantizar la mantenibilidad y escalabilidad.
+## Tecnologías utilizadas
+- **Java 17**
+- **Spring Boot** para la creación del API REST
+- **JPA (Hibernate)** para la persistencia de datos
+- **H2** como base de datos en memoria
+- **Jacoco** para la cobertura de código
+- **JUnit** y **MockMVC** para los tests de integración y unitarios
 
-## Tecnologías
-- Java 17
-- Spring Boot
-- H2 Database
-- Maven
-- JUnit & Jacoco
+## Arquitectura
+El proyecto sigue una **arquitectura hexagonal**, separando las capas de infraestructura, aplicación y dominio:
+- **Dominio**: Contiene la lógica central de la aplicación (entidades, servicios de dominio).
+- **Aplicación**: Contiene casos de uso y controladores.
+- **Infraestructura**: Interactúa con frameworks y herramientas externas (repositorios, excepciones, adaptadores).
 
-## Cómo ejecutar el proyecto
-1. Clona el repositorio: `git clone https://github.com/usuario/pricing.git`
-2. Ve al directorio del proyecto: `cd pricing`
-3. Ejecuta el proyecto: `mvn spring-boot:run`
-4. Para pruebas: `mvn test`
+## Patrones de diseño implementados
+- **Repository Pattern**: Para el acceso a los datos.
+- **DTO Pattern**: Para transferir datos entre capas.
+- **Exception Handling**: Control centralizado de errores.
 
-## Patrones de Diseño
-- **Repository Pattern:** Para separar la lógica de acceso a datos.
-- **DTO:** Para desacoplar las entidades de negocio de las respuestas del API.
+## Instrucciones
+### Ejecutar el proyecto
+```bash
+mvn spring-boot:run

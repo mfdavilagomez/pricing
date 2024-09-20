@@ -6,11 +6,13 @@ import com.pricing.domain.model.Price;
 import com.pricing.domain.port.in.PriceQuery;
 import com.pricing.domain.port.out.PriceRepositoryPort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class PriceService implements PriceQuery {
 
     private final PriceRepositoryPort priceRepositoryPort;
@@ -32,7 +34,7 @@ public class PriceService implements PriceQuery {
     @Override
     public PriceDTO getPrice(LocalDateTime date, Long productId, Long brandId) {
         Optional<Price> priceOpt = priceRepositoryPort.findApplicablePrice(
-                productId, brandId, date, date);
+                productId, brandId, date);
         return priceOpt.map(this::toPriceDTO)
                 .orElseThrow(() -> new ConflictException("No price found for the given parameters"));
     }
